@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Barber</title>
+  <script src="https://khalti.com/static/khalti-checkout.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    button {
+      background: #b01b1b;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #900d0d;
+    }
+    #khalti-button-container {
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Book an Appointment</h2>
+  <form id="booking-form" onsubmit="bookAppointment(event)">
+    <label for="name">Name</label>
+    <input type="text" id="name" required>
+
+    <label for="phone">Phone</label>
+    <input type="tel" id="phone" required>
+
+    <label for="booking-time">Booking Time</label>
+    <input type="time" id="booking-time" required>
+
+    <label for="service">Service</label>
+    <select id="service" required>
+      <option value='{"id":"123","price":500}'>Hair Cut - NPR 500</option>
+      <option value='{"id":"124","price":700}'>Hair + Beard - NPR 700</option>
+    </select>
+
+    <label for="barber">Barber</label>
+    <select id="barber" required>
+      <option value="barber1">Barber Ram</option>
+      <option value="barber2">Barber Shyam</option>
+    </select>
+
+    <label for="area">Area</label>
+    <input type="text" id="area" required>
+
+    <label for="payment-method">Payment Method</label>
+    <select id="payment-method" onchange="toggleKhalti()" required>
+      <option value="" disabled selected>Select payment method</option>
+      <option value="offline">Cash</option>
+      <option value="khalti">Pay with Khalti</option>
+    </select>
+
+    <div id="khalti-button-container">
+      <button type="button" onclick="payWithKhalti()">Pay with Khalti</button>
+    </div>
+
+    <button type="submit">Book Now</button>
+  </form>
+</div>
+
+<script>
+  function toggleKhalti() {
+    const method = document.getElementById("payment-method").value;
+    document.getElementById("khalti-button-container").style.display = method === "khalti" ? "block" : "none";
+  }
+
+  function collectBookingData() {
+    const serviceData = JSON.parse(document.getElementById("service").value);
+    return {
+      name: document.getElementById("name").value,
+      phone: document.getElementById("phone").value,
+      bookingTime: document.getElementById("booking-time").value,
+      service: serviceData.id,
+      price: serviceData.price,
+      barberId: document.getElementById("barber").value,
+      area: document.getElementById("area").value
+    };
+  }
+
+  async function bookAppointment(event) {
+    event.preventDefault();
+    const method = document.getElementById("payment-method").value;
+    if (method === "khalti") {
+      alert("Please complete payment using Khalti first.");
+      return;
+    }
+
+    const bookingData = collectBookingData();
+    bookingData.paymentMethod = method;
+
+    const response = await fetch("http://localhost:5000/book", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bookingData),
+    });
+
+    const result = await response.json();
+    alert(result.msg || "Booking successful.");
+    document.getElementById("booking-form").reset();
+    toggleKhalti();
+  }
+
+  async function payWithKhalti() {
+    const data = collectBookingData();
+    const response = await fetch("http://localhost:5000/bookings/pay/initiate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    if (!response.ok) return alert(result.msg);
+
+    const config = {
+      publicKey: "test_public_key_dc74cf6a7a5941c7bafcad1c97776dea", // Your provided key
+      productIdentity: result.bookingId,
+      productName: "Barber Booking",
+      productUrl: "http://localhost:3000",
+      paymentPreference: ["KHALTI"],
+      eventHandler: {
+        onSuccess(payload) {
+          fetch("http://localhost:5000/bookings/pay/verify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              token: payload.token,
+              amount: result.amount,
+              bookingId: result.bookingId
+            }),
+          })
+          .then(res => res.json())
+          .then(data => {
+            alert(data.msg);
+            document.getElementById("booking-form").reset();
+            toggleKhalti();
+          });
+        },
+        onError(error) {
+          console.error(error);
+          alert("Khalti payment failed");
+        }
+      },
+    };
+
+    new KhaltiCheckout(config).show({ amount: result.amount });
+  }
+</script>
+
+</body>
+</html>

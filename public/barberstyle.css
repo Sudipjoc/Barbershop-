@@ -1,0 +1,259 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Define CSS Variables for Colors */
+:root {
+  --primary-color: #333;
+  --secondary-color: #f44336;
+  --hover-color: #444;
+  --background-color: #f4f4f4;
+  --white: #fff;
+  --light-gray: #ddd;
+  --dark-gray: #222;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Body and Font Style */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 10px 0;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.navbar a.logo {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.menu-items {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.menu-items li a {
+  color: var(--white);
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.menu-items li a:hover {
+  background-color: var(--hover-color);
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-btn {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.logout-btn:hover {
+  background-color: darken(var(--secondary-color), 10%);
+}
+
+/* Search Container */
+.search-container {
+  margin: 20px auto;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+}
+
+#search-location {
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid var(--light-gray);
+  box-shadow: 0 2px 5px var(--shadow);
+}
+
+#location-suggestions {
+  position: absolute;
+  top: 42px;
+  width: 100%;
+  background: var(--white);
+  border: 1px solid #ccc;
+  border-top: none;
+  z-index: 1000;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+}
+
+#location-suggestions li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#location-suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Barber Grid Layout */
+.barber-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.barber-card {
+  flex: 1 1 calc(33.33% - 40px);
+  max-width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
+  background-color: var(--white);
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 5px var(--shadow);
+}
+
+.barber-card:hover {
+  transform: scale(1.03);
+}
+
+.barber-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.barber-card h3 {
+  margin-top: 10px;
+  color: var(--dark-gray);
+}
+
+.barber-card p {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 5px 0;
+}
+
+.barber-card ul {
+  padding-left: 20px;
+  margin: 10px 0 0;
+}
+
+.barber-card li {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+  .barber-card {
+    flex: 1 1 calc(45% - 40px);
+  }
+}
+
+@media (max-width: 768px) {
+  .barber-card {
+    flex: 1 1 100%;
+  }
+
+  .menu-items {
+    justify-content: center;
+  }
+}
+
+/* Availability Section for Employee Table */
+.availability-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.availability-text {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.availability-text.free {
+  color: green; /* Green color for Available */
+}
+
+.availability-text.busy {
+  color: red; /* Red color for Busy */
+}
+
+/* Style for the switch (toggle) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}

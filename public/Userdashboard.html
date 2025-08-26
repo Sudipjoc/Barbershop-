@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="user.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+/>
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index2.html" class="logo">Barbershop</a>
+      <div class="nav-group">
+        <ul class="menu-items">
+          <li><a href="#appointments">My Appointments</a></li>
+          <li class="notification-icon-wrapper">
+            <a href="javascript:void(0);" class="notification-icon">
+              <i class="fas fa-bell"></i>
+            </a>
+            <div class="notification-dropdown" id="notification-list">
+              <p>No new notifications yet.</p>
+            </div>
+          </li>
+        </ul>
+
+        <!-- User Dropdown -->
+        <div class="user-dropdown" id="userDropdown">
+          <span id="username">Profile</span>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a href="profile.html">Profile</a>
+            <a href="#" id="logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- User Dashboard -->
+  <section class="dashboard-section">
+    <div class="dashboard-container">
+      <h2>Welcome, <span id="userWelcome"></span></h2>
+<!-- Account Management Section -->
+<div class="card mt-4 p-4">
+  <h3 class="mb-3">Manage Account</h3>
+  <div class="d-flex flex-column flex-sm-row gap-3">
+    <button id="edit-account-btn" class="btn btn-primary">Edit Account</button>
+    <button id="delete-account-btn" class="btn btn-danger">Delete Account</button>
+  </div>
+</div>
+
+<!-- Edit Account Modal -->
+<div id="editModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); justify-content:center; align-items:center; z-index:1050;">
+  <div style="background:white; padding:20px; border-radius:10px; width:100%; max-width:400px;">
+    <h4 class="mb-3">Edit Account</h4>
+    <form id="editAccountForm">
+      <div class="mb-3">
+        <label for="editFirstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="editFirstName" required>
+      </div>
+      <div class="mb-3">
+        <label for="editLastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="editLastName" required>
+      </div>
+      <div class="mb-3">
+        <label for="editEmail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="editEmail" required>
+      </div>
+      <div class="mb-3">
+        <label for="editPassword" class="form-label">New Password (Optional)</label>
+        <input type="password" class="form-control" id="editPassword">
+      </div>
+      <div class="d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+        <button type="submit" class="btn btn-success">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Review Modal -->
+<!-- Review Modal -->
+<div id="reviewModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.4); justify-content:center; align-items:center; z-index:1050;">
+  <div style="background:white; padding:20px; border-radius:10px; width:100%; max-width:400px;">
+    <h4 class="mb-3">Submit Review</h4>
+    <form id="reviewForm">
+      <input type="hidden" id="reviewBookingId" />
+      <input type="hidden" id="reviewBarberId" />
+      <div class="mb-3">
+        <label for="reviewText" class="form-label">Review</label>
+        <textarea class="form-control" id="reviewText" rows="3" placeholder="Write your feedback..."></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="reviewRating" class="form-label">Rating (1 to 5)</label>
+        <input type="number" class="form-control" id="reviewRating" min="1" max="5" required />
+      </div>
+      <div class="d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-secondary" onclick="closeReviewModal()">Cancel</button>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+      <!-- Appointments Section -->
+      <div id="appointments">
+        <h3>Your Appointments</h3>
+        <div id="appointment-list"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Socket.IO & Toastify -->
+  <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="userdashboard.js"></script>
+</body>
+</html>

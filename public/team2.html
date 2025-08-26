@@ -1,0 +1,474 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BarberShop & Hair Salon HTML Template">
+    <meta name="author" content="">
+    <title>Barber Shops</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+
+    <link rel="stylesheet" href="css/elegant-font-icons.css">
+
+    <link rel="stylesheet" href="css/elegant-line-icons.css">
+
+    <link rel="stylesheet" href="css/themify-icons.css">
+
+    <link rel="stylesheet" href="css/barber-icons.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/animate.min.css">
+
+    <link rel="stylesheet" href="css/venobox/venobox.css">
+
+    <link rel="stylesheet" href="css/nice-select.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.css">
+
+    <link rel="stylesheet" href="css/slicknav.min.css">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      /* padding: 20px; */
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    ul#teamList {
+      display: flex;
+      overflow-x: auto;
+      list-style: none;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+      scroll-behavior: smooth;
+    }
+
+    ul#teamList li {
+      flex: 0 0 auto;
+      width: 250px;
+      background: #f0f0f0;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    ul#teamList li img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 40%;
+      background: #000;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      z-index: 10;
+    }
+
+    #prevBtn {
+      left: 10px;
+    }
+
+    #nextBtn {
+      right: 10px;
+    }
+
+    .btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+  </style>
+
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+
+<body>
+
+    <div id='preloader'>
+        <div class='loader'>
+            <img src="img/loading.gif" width="80" alt="">
+        </div>
+    </div>
+      <header id="header" class="header-section">
+        <div class="container">
+            <nav class="navbar ">
+                <a href="#" class="navbar-brand" style="color: white">BarberShop</a>
+                <div class="d-flex menu-wrap align-items-center">
+                    <div id="mainmenu" class="mainmenu">
+                        <ul class="nav">
+                            <li><a data-scroll class="nav-link active" href="index2.html">Home<span
+                                        class="sr-only">(current)</span></a>
+                                <ul>
+
+                                </ul>
+                            </li>          
+                            <li><a href="services2.html">Services</a>
+                            </li>
+                            <li><a href="#">Pages</a>
+                                <ul>
+                                    <li><a href="appointment.html">Appointment</a></li>
+                                    <li><a href="team2.html">Our Team</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-btn">
+                        <a href="Userdashboard.html" class="menu-btn">Dashboard</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    
+    <div style="margin: 30px 0; text-align: center;">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search by location"
+    style="padding: 8px; width: 250px; border: 1px solid #ccc; border-radius: 4px;" />
+  <button
+    id="searchBtn"
+    style="padding: 8px 16px; background-color: #000; color: white; border: none; border-radius: 4px; cursor: pointer;">
+    Search
+  </button>
+</div>
+
+   <h1>Meet Our Barbers</h1>
+  
+  <div class="carousel-container">
+    <button id="prevBtn" class="nav-btn">&#10094;</button>
+    <button id="nextBtn" class="nav-btn">&#10095;</button>
+    <ul id="teamList">
+      <li>
+        <img src="" alt="Barber">
+        <h3>Barber Name</h3>
+        <p>Location</p>
+      </li>
+    </ul>
+  </div>
+   <br>
+  
+    
+    <section class="widget_section padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 sm-padding">
+                    <div class="footer_widget">
+                        <img class="mb-15" src="img/logo.png" alt="Brand">
+                        <p>Our website is the created for men who appreciate premium quality, time and flawless look.
+                        </p>
+                        <ul class="widget_social">
+                            <li><a href="#"><i class="social_facebook"></i></a></li>
+                            <li><a href="#"><i class="social_twitter"></i></a></li>
+                            <li><a href="#"><i class="social_googleplus"></i></a></li>
+                            <li><a href="#"><i class="social_instagram"></i></a></li>
+                            <li><a href="#"><i class="social_linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 sm-padding">
+                    <div class="footer_widget">
+                        <h3>Headquaters</h3>
+                        <p>New Baneshor</p>
+                        <p><a href="https://html.dynamiclayers.net/cdn-cgi/l/email-protection" class="__cf_email__"
+                                data-cfemail="024a676e6e6d42667b6c636f6b616e637b6770712c6c6776">[email&#160;protected]</a>
+                            <br>+1234567890</p>
+                    </div>
+                </div>
+          
+                <div class="col-lg-3 col-md-12 sm-padding">
+                    <div class="footer_widget">
+                        <h3>Subscribe to our contents</h3>
+                        <div class="subscribe_form">
+                            <form action="#" class="subscribe_form">
+                                <input type="email" name="email" id="subs-email" class="form_input"
+                                    placeholder="Email Address...">
+                                <button type="submit" class="submit">SUBSCRIBE</button>
+                                <div class="clearfix"></div>
+                                <div id="subscribe-result">
+                                    <p class="subscription-success"></p>
+                                    <p class="subscription-error"></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+    <footer class="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 xs-padding">
+                    <div class="copyright">&copy;
+                        <script type="text/javascript"> document.write(new Date().getFullYear())</script> Barber Shop
+                        
+                    </div>
+                </div>
+                <div class="col-md-6 xs-padding">
+                    <ul class="footer_social">
+                        <li><a href="#">Orders</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Report Problem</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <a data-scroll href="#header" id="scroll-to-top"><i class="arrow_up"></i></a>
+
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+
+    <script src="js/vendor/imagesloaded.pkgd.min.js"></script>
+
+    <script src="js/vendor/owl.carousel.min.js"></script>
+
+    <script src="js/vendor/jquery.isotope.v3.0.2.js"></script>
+
+    <script src="js/vendor/smooth-scroll.min.js"></script>
+
+    <script src="js/vendor/venobox.min.js"></script>
+
+    <script src="js/vendor/jquery.ajaxchimp.min.js"></script>
+
+    <script src="js/vendor/jquery.slicknav.min.js"></script>
+
+    <script src="js/vendor/jquery.nice-select.min.js"></script>
+
+    <script src="js/vendor/jquery.mb.YTPlayer.min.js"></script>
+
+    <script src="js/vendor/wow.min.js"></script>
+
+    <script src="js/contact.js"></script>
+
+    <script src="js/appointment.js"></script>
+
+    <script src="js/main.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const teamList = document.getElementById("teamList");
+  const template = teamList.querySelector("li");
+  template.remove();
+
+  const baseUrl = "http://localhost:5000";
+  let allBarbers = [];
+
+  async function getBarberRating(barberId) {
+  try {
+    const res = await fetch(`${baseUrl}/reviews/rating/${barberId}`);
+    if (!res.ok) throw new Error("Failed to fetch rating");
+    const data = await res.json();
+    console.log("Rating data for barber", barberId, data);  // DEBUG
+    return data;
+  } catch (err) {
+    console.error(err);
+    return { avgRating: null, count: 0 };
+  }
+}
+
+
+  async function loadBarbers(barbersToShow = []) {
+    teamList.innerHTML = "";
+
+    // Changed to for...of with await to handle async rating fetch
+    for (const [index, barber] of barbersToShow.entries()) {
+      const clone = template.cloneNode(true);
+
+      const imagePath = barber.image
+        ? `${baseUrl}${barber.image.startsWith("/") ? barber.image : `/uploads/${barber.image}`}`
+        : `${baseUrl}/uploads/default.png`;
+
+      const imgEl = clone.querySelector("img");
+      imgEl.src = imagePath;
+      imgEl.alt = barber.name || "Barber";
+
+      const isOpen = barber.shopStatus?.toLowerCase() === "open";
+      const statusCircle = `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;background-color:${isOpen ? 'green' : 'red'};"></span>`;
+
+      clone.querySelector("h3").textContent = barber.name || "Unnamed";
+
+      // Fetch rating and build rating text
+      const ratingData = await getBarberRating(barber._id);
+      let ratingText = "No ratings yet";
+      if (ratingData.avgRating !== null) {
+        ratingText = `⭐ ${ratingData.avgRating.toFixed(1)} (${ratingData.count})`;
+      }
+
+      clone.querySelector("p").innerHTML = `
+        ${barber.location || "Unknown Location"}<br>
+        ${statusCircle}<strong>Shop:</strong> ${barber.shopStatus || "Unknown"}<br>
+        <strong>Available:</strong> ${barber.availabilityStatus || "Unknown"}<br>
+        <strong>Rating:</strong> ${ratingText}
+      `;
+
+      clone.setAttribute("data-wow-delay", `${200 + index * 100}ms`);
+
+      // Buttons container
+      const buttonWrapper = document.createElement("div");
+      buttonWrapper.style.marginTop = "10px";
+      buttonWrapper.style.display = "flex";
+      buttonWrapper.style.justifyContent = "space-between";
+      buttonWrapper.style.gap = "10px";
+
+      // More Button
+      const moreBtn = document.createElement("button");
+      moreBtn.textContent = "More";
+      moreBtn.className = "btn btn-info";
+      moreBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href = `barber-detail.html?id=${barber._id}`;
+      });
+
+      // Book Now Button
+      const bookBtn = document.createElement("button");
+      bookBtn.textContent = "Book Now";
+      bookBtn.className = "btn btn-primary";
+      bookBtn.disabled = !isOpen;
+
+      bookBtn.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          alert("Please log in to book an appointment.");
+          window.location.href = "login.html";
+          return;
+        }
+
+        try {
+          const userRes = await fetch(`${baseUrl}/auth/me`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+
+          if (!userRes.ok) throw new Error("Failed to fetch user details");
+
+          const user = await userRes.json();
+
+          // Store user and barber info
+          localStorage.setItem("selectedBarber", JSON.stringify({
+            name: barber.name,
+            location: barber.location,
+            id: barber._id
+          }));
+
+          localStorage.setItem("loggedInUser", JSON.stringify({
+            id: user._id,
+            name: user.firstName && user.lastName ? `${user.firstName} ${user.lastName}` : user.name,
+            email: user.email
+          }));
+
+          // ✅ Log or use email here
+          console.log("User email:", user.email);
+
+          // Redirect to appointment page
+          window.location.href = "appointment.html";
+
+        } catch (error) {
+          console.error("Error fetching user details:", error);
+          alert("There was an issue retrieving your profile. Please log in again.");
+          localStorage.removeItem("token");
+          window.location.href = "login.html";
+        }
+      });
+
+      buttonWrapper.appendChild(moreBtn);
+      buttonWrapper.appendChild(bookBtn);
+      clone.appendChild(buttonWrapper);
+
+      // Apply open/closed styling
+      if (isOpen) {
+        clone.style.cursor = "pointer";
+      } else {
+        clone.style.opacity = 0.6;
+        clone.title = "Shop is currently closed";
+      }
+
+      teamList.appendChild(clone);
+    }
+  }
+
+  // Initial load
+  try {
+    const res = await fetch(`${baseUrl}/barber/barbers`);
+    if (!res.ok) throw new Error(`Failed to fetch: ${res.statusText}`);
+
+    allBarbers = await res.json();
+    await loadBarbers(allBarbers);
+
+    // Scroll buttons
+    const cardWidth = 270;
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      teamList.scrollBy({ left: cardWidth, behavior: "smooth" });
+    });
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      teamList.scrollBy({ left: -cardWidth, behavior: "smooth" });
+    });
+
+    // Search by location
+    document.getElementById("searchInput").addEventListener("input", () => {
+      const query = document.getElementById("searchInput").value.trim().toLowerCase();
+      const filtered = allBarbers.filter(barber =>
+        barber.location && barber.location.toLowerCase().includes(query)
+      );
+      loadBarbers(filtered);
+    });
+
+  } catch (error) {
+    console.error("❌ Error loading barbers:", error);
+    teamList.innerHTML = `<p style="color:red;">Failed to load barbers.</p>`;
+  }
+});
+
+
+</script>
+
+
+</body>
+
+
+</html>
